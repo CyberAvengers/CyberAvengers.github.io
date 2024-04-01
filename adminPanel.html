@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+</head>
+<body>
+    <h1>Welcome to the Admin Panel</h1>
+
+    <div id="adminContent">
+        <!-- Video -->
+        <video id="adminVideo" controls style="display: none;">
+            <source id="videoSource" src="secret.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <!-- Text -->
+        <p id="adminText" style="display: none;">flag: SashasNumberOneFan</p>
+    </div>
+
+    <script>
+        // Define a function to check if the user is an admin
+        function checkAdminStatus() {
+            // Check if the cookie "admin" is set to true
+            const isAdmin = document.cookie.split(';').some((item) => item.trim().startsWith('admin=true'));
+            
+            // Toggle the display of admin content based on admin status
+            const adminVideo = document.getElementById('adminVideo');
+            const adminText = document.getElementById('adminText');
+            if (isAdmin) {
+                // Display admin content
+                adminVideo.style.display = 'block';
+                adminText.style.display = 'block';
+            } else {
+                // Hide admin content
+                adminVideo.style.display = 'none';
+                adminText.style.display = 'none';
+            }
+        }
+
+        // Call the function immediately to check admin status
+        checkAdminStatus();
+    </script>
+</body>
+</html>
